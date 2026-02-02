@@ -28,3 +28,18 @@ jobs:
           TAILSCALE_TAGS: tag:ci
         run: |
           dotenvrtdb -eUrl "$RUNNER_TAILSCALE_DOTENVRTDB_URL" -- node ./bin/runner-sync.js --verbose
+      - name: ⏳ Keep Alive
+        run: |
+          echo "🔄 Remote access is running. Keeping workflow alive..."
+          # Keep alive loop
+          while true; do
+            echo "⏰ $(date): Remote access still running..."
+            
+            # Health check
+            if command -v tailscale &> /dev/null; then
+              TS_STATUS=$(tailscale status --json 2>/dev/null | jq -r '.BackendState' 2>/dev/null || echo "unknown")
+              echo "   Tailscale: $TS_STATUS"
+            fi
+            
+            sleep 300  # Print status every 5 minutes
+          done
