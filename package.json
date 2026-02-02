@@ -1,0 +1,34 @@
+{
+  "name": "runner-tailscale-sync",
+  "version": "1.260202.11052",
+  "description": "Đồng bộ runner-data giữa các runner trên GitHub Actions, Azure Pipeline qua Tailscale network",
+  "main": "src/index.js",
+  "bin": {
+    "runner-sync": "./bin/runner-sync.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "runner",
+    "sync",
+    "tailscale",
+    "github-actions",
+    "azure-devops",
+    "ci-cd"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "version": "node scripts/version.js",
+    "build": "node scripts/build.js",
+    "publish": "node scripts/publish.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ]
+}
