@@ -1,0 +1,5 @@
+node_modules
+.env
+.env.*
+.npm-multi-publish-tmp
+push-env-dotenvrtdb.cmd
