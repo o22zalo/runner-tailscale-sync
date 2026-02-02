@@ -15,7 +15,7 @@ function run(cmd, options = {}) {
   const { ignoreError = false, cwd, logger } = options;
 
   if (logger) {
-    logger.command(cmd);
+    logger.info(cmd);
   }
 
   try {
@@ -78,9 +78,7 @@ function runWithTimeout(cmd, timeoutMs, options = {}) {
       cwd: options.cwd || process.cwd(),
       detached: !isWindows,
     };
-    const child = useArray
-      ? spawn(cmd[0], cmd.slice(1), spawnOptions)
-      : spawn(cmd, { ...spawnOptions, shell: true });
+    const child = useArray ? spawn(cmd[0], cmd.slice(1), spawnOptions) : spawn(cmd, { ...spawnOptions, shell: true });
 
     const timer = setTimeout(() => {
       if (isWindows) {
@@ -119,7 +117,6 @@ function runWithTimeout(cmd, timeoutMs, options = {}) {
     });
   });
 }
-
 
 /**
  * Sleep
